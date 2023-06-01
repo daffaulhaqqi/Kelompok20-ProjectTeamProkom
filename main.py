@@ -45,3 +45,21 @@ def input_data(nama, berat_laundry, jenis_laundry, jenis_pewangi, jarak):
     
     with open("data.json", "w") as f:
         f.write(json.dumps(data, indent=4))
+
+
+def tampilkan_data(nama):
+    with open("data.json", "r") as f:
+        data = json.load(f)
+        for pelanggan in data["pelanggan"]:
+            if pelanggan["nama"] == nama:
+                print('Nama Pelanggan:', pelanggan["nama"])
+                print('Tanggal Laundry:', pelanggan["tanggal_laundry"])
+                print('Berat Laundry:', pelanggan["berat_laundry"])
+                print('Jenis Laundry:', pelanggan["jenis_laundry"])
+                print('Jenis Pewangi:', pelanggan["jenis_pewangi"])
+                print('Harga Laundry Per Kg:', pelanggan["harga_laundry_per_kg"])
+                print('Harga Pewangi:', pelanggan["harga_pewangi"])
+                print('Total Biaya:', pelanggan["total_biaya"])
+                print('Estimasi Waktu Selesai: ', pelanggan["estimasi_waktu_selesai"])
+            else:
+                pass
