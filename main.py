@@ -63,3 +63,16 @@ def tampilkan_data(nama):
                 print('Estimasi Waktu Selesai: ', pelanggan["estimasi_waktu_selesai"])
             else:
                 pass
+def hapus_data(nama):
+    with open("data.json", "r") as f:
+        data = json.load(f)
+        for pelanggan in data["pelanggan"]:
+            if pelanggan["nama"] == nama:
+                data["pelanggan"].remove(pelanggan)
+                a = json.dumps(data["pelanggan"], indent=4)
+                with open("data.json", "w") as f:
+                    f.write(json.dumps(data, indent=4))
+                print('Data Dihapus')
+            else:
+                pass
+                # print('Nama Pelanggan Tidak Ada')
