@@ -76,3 +76,58 @@ def hapus_data(nama):
             else:
                 pass
                 # print('Nama Pelanggan Tidak Ada')
+
+    # with open("data.json", "r") as f:
+    #     data = json.load(f)
+    #     for i,obj in enumerate(data["pelanggan"]):
+    #         if obj["nama"] == nama:
+    #             del data["pelanggan"][i]
+    #             print('Data Berhasil Dihapus')
+    #             break
+    #         else:
+    #             print('Nama Pelanggan Tidak Ada')
+    #             f.close()
+    #             return
+    #     with open("data.json", "w") as f:
+    #             json.dump(data, f, indent=4)
+
+def main():
+    pro = int(input("Pilih Jenis Program (1/2/3)"))
+    if pro == 1:
+        nama = input("Masukkan nama Anda: ")
+        berat_laundry = float(input("Masukkan berat laundry dalam kilogram: "))
+        jenis_laundry = input("Pilih jenis laundry (reguler / express): ")
+        jenis_pewangi = input("Pilih jenis pewangi (lavender / jeruk / peppermint): ")
+        delivery = input('Menggunakan Jasa Antar Atau Tidak: (ya/tidak) ')
+        if delivery == 'ya':
+            jarak = int(input('Jarak Berapa dalam km '))
+        else:
+            jarak = 0
+        input_data(nama, berat_laundry, jenis_laundry, jenis_pewangi, jarak)
+    elif pro == 2:
+        nama = input("Masukkan nama Anda: ")
+        tampilkan_data(nama)
+    elif pro == 3:
+        nama = input("Masukkan nama: ")
+        hapus_data(nama)
+    
+def login(username, password):
+    with open('data.json', 'r') as r:
+        a = json.load(r)
+        if username == a["admin"]["username"] and password == a["admin"]["password"]:
+            x = 0
+            while x == 0:
+                main()
+                lag = input('Ingin Melakukan Program Lagi?')
+                lag.lower()
+                if lag == "ya":
+                    x = 0
+                else:
+                    x = x+1
+        else:
+            print('Username atau Password Salah')
+
+if __name__ == "__main__":
+    username = input('Masukkan Username: ')
+    password = input('Masukkan Password: ')
+    login(username, password)
