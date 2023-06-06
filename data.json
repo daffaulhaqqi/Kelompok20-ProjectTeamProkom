@@ -4,5 +4,52 @@
         "password": "dani"
     },
     "pelanggan": [
-    ]
+        {
+            "nama": "da",
+            "berat_laundry": 2.0,
+            "jenis_laundry": "express",
+            "jenis_pewangi": "jeruk",
+            "harga_laundry_per_kg": 5000,
+            "harga_pewangi": 1500,
+            "tanggal_laundry": "2023-06-05 17:47:37",
+            "jarak": 0,
+            "harga delivery": 0,
+            "total_biaya": 11500.0,
+            "estimasi_waktu_selesai": "2023-06-06 05:47:37"
+        },
+        {
+            "nama": "psdada",
+            "berat_laundry": 23.0,
+            "jenis_laundry": "e",
+            "jenis_pewangi": "lavender",
+            "harga_laundry_per_kg": 5000,
+            "harga_pewangi": 1000,
+            "tanggal_laundry": "2023-06-05 18:13:31",
+            "jarak": 0,
+            "harga delivery": 0,
+            "total_biaya": 116000.0,
+            "estimasi_waktu_selesai": "2023-06-06 06:13:31"
+        },
+        {
+            "nama": "pradipta",
+            "berat_laundry": 2.0,
+            "jenis_laundry": "express",
+            "jenis_pewangi": "lavender",
+            "harga_laundry_per_kg": 5000,
+            "harga_pewangi": 1000,
+            "tanggal_laundry": "2023-06-05 18:25:30",
+            "jarak": 2,
+            "harga delivery": 0,
+            "total_biaya": 11000.0,
+            "estimasi_waktu_selesai": "2023-06-06 06:25:30"
+        }
+    ],
+    "pewangi": {
+        "lavender": 1000,
+        "jeruk": 1500,
+        "peppermint": 2000,
+        "strawberry": 1800,
+        "vanilla": 1200,
+        "mango": 1700
+    }
 }

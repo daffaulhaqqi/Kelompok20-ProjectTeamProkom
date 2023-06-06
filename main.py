@@ -2,14 +2,9 @@ import json
 import datetime
 
 def input_data(nama, berat_laundry, jenis_laundry, jenis_pewangi, jarak):
-    harga_pewangi = {
-        "lavender": 1000,
-        "jeruk": 1500,
-        "peppermint": 2000,
-        "strawberry": 1800,
-        "vanilla": 1200,
-        "mango": 1700
-        }
+    with open("data.json", "r") as f:
+        x = json.load(f)
+        pewangi = x["pewangi"]
     tanggal = datetime.datetime.now()
     if jarak <= 3:
         harga_delivery = 0
@@ -22,14 +17,14 @@ def input_data(nama, berat_laundry, jenis_laundry, jenis_pewangi, jarak):
     else:
         waktu_selesai = datetime.datetime.now() + datetime.timedelta(hours=12)
         harga_laundry = 5000
-    total_biaya = (berat_laundry * harga_laundry) + harga_pewangi[jenis_pewangi] + harga_delivery
+    total_biaya = (berat_laundry * harga_laundry) + pewangi[jenis_pewangi] + harga_delivery
     data_pelanggan = {
             "nama": nama,
             "berat_laundry": berat_laundry,
             "jenis_laundry": jenis_laundry,
             "jenis_pewangi": jenis_pewangi,
             "harga_laundry_per_kg": harga_laundry,
-            "harga_pewangi": harga_pewangi[jenis_pewangi],
+            "harga_pewangi" : pewangi[jenis_pewangi],
             "tanggal_laundry" : tanggal.strftime("%Y-%m-%d %H:%M:%S"),
             "jarak" : jarak,
             "harga delivery": harga_delivery,
@@ -50,6 +45,7 @@ def input_data(nama, berat_laundry, jenis_laundry, jenis_pewangi, jarak):
 def tampilkan_data(nama):
     with open("data.json", "r") as f:
         data = json.load(f)
+        found = False
         for pelanggan in data["pelanggan"]:
             if pelanggan["nama"] == nama:
                 print('Nama Pelanggan:', pelanggan["nama"])
@@ -61,11 +57,15 @@ def tampilkan_data(nama):
                 print('Harga Pewangi:', pelanggan["harga_pewangi"])
                 print('Total Biaya:', pelanggan["total_biaya"])
                 print('Estimasi Waktu Selesai: ', pelanggan["estimasi_waktu_selesai"])
-            else:
-                pass
+                found = True
+                break
+        else:
+            if not found:
+                print("Tidak Ada Nama")
 def hapus_data(nama):
     with open("data.json", "r") as f:
         data = json.load(f)
+        found = False
         for pelanggan in data["pelanggan"]:
             if pelanggan["nama"] == nama:
                 data["pelanggan"].remove(pelanggan)
@@ -73,23 +73,10 @@ def hapus_data(nama):
                 with open("data.json", "w") as f:
                     f.write(json.dumps(data, indent=4))
                 print('Data Dihapus')
-            else:
-                pass
-                # print('Nama Pelanggan Tidak Ada')
-
-    # with open("data.json", "r") as f:
-    #     data = json.load(f)
-    #     for i,obj in enumerate(data["pelanggan"]):
-    #         if obj["nama"] == nama:
-    #             del data["pelanggan"][i]
-    #             print('Data Berhasil Dihapus')
-    #             break
-    #         else:
-    #             print('Nama Pelanggan Tidak Ada')
-    #             f.close()
-    #             return
-    #     with open("data.json", "w") as f:
-    #             json.dump(data, f, indent=4)
+                found = True
+        else:
+                if not found:
+                    print("Data tidak ada!")
 
 def main():
     pro = int(input("Pilih Jenis Program (1/2/3)"))
@@ -111,23 +98,27 @@ def main():
         nama = input("Masukkan nama: ")
         hapus_data(nama)
     
-def login(username, password):
-    with open('data.json', 'r') as r:
-        a = json.load(r)
-        if username == a["admin"]["username"] and password == a["admin"]["password"]:
-            x = 0
-            while x == 0:
+def login():
+    while True:
+        username = input('Masukkan Username: ')
+        password = input('Masukkan Password: ')
+        with open('data.json', 'r') as r:
+            a = json.load(r)
+            if username == a["admin"]["username"] and password == a["admin"]["password"]:
                 main()
                 lag = input('Ingin Melakukan Program Lagi?')
-                lag.lower()
-                if lag == "ya":
-                    x = 0
-                else:
-                    x = x+1
-        else:
-            print('Username atau Password Salah')
+                while True:
+                    if lag.lower() == "tidak":
+                        exit()
+                        break
+                    else:
+                        main()
+                        lag = input('Ingin Melakukan Program Lagi?')
+                        
+                        
+            else:
+                print('Username atau Password Salah')
+
 
 if __name__ == "__main__":
-    username = input('Masukkan Username: ')
-    password = input('Masukkan Password: ')
-    login(username, password)
+        login()
