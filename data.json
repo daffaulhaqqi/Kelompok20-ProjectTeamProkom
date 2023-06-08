@@ -42,6 +42,19 @@
             "harga delivery": 0,
             "total_biaya": 11000.0,
             "estimasi_waktu_selesai": "2023-06-06 06:25:30"
+        },
+        {
+            "nama": "2",
+            "berat_laundry": 4.0,
+            "jenis_laundry": "reguler",
+            "jenis_pewangi": "lavender",
+            "harga_laundry_per_kg": 3500,
+            "harga_pewangi": 1000,
+            "tanggal_laundry": "2023-06-08 13:14:22",
+            "jarak": 5,
+            "harga delivery": 6000,
+            "total_biaya": 21000.0,
+            "estimasi_waktu_selesai": "2023-06-11 13:14:22"
         }
     ],
     "pewangi": {
