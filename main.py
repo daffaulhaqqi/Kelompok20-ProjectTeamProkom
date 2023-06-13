@@ -1,47 +1,67 @@
+import tkinter as tk
+from tkinter import *
 import json
-import datetime
+from tkinter import ttk
+from tkinter.messagebox import showinfo
+from PIL import ImageTk,Image
+from tkinter.messagebox import *
+import opsi
 
-def input_data(nama, berat_laundry, jenis_laundry, jenis_pewangi, jarak):
-    harga_pewangi = {
-        "lavender": 1000,
-        "jeruk": 1500,
-        "peppermint": 2000,
-        "strawberry": 1800,
-        "vanilla": 1200,
-        "mango": 1700
-        }
-    tanggal = datetime.datetime.now()
-    if jarak <= 3:
-        harga_delivery = 0
-    elif jarak > 3:
-        harga_delivery = (jarak-3)*3000
+def login():
+    username = usernam.get()
+    password = passwor.get()
+    with open('data.json', 'r') as r:
+        a = json.load(r)
+        if username == a["admin"]["username"] and password == a["admin"]["password"]:
+            print("dani")
+            loginwindow.destroy()
+            showinfo(title="Login", message="Login Berhasil")
+            opsi.opsi()
+        else:
+            showwarning(title="Login", message='Username atau Password Salah')
 
-    if jenis_laundry == "reguler":
-        waktu_selesai = datetime.datetime.now() + datetime.timedelta(days=3)
-        harga_laundry = 3500
-    else:
-        waktu_selesai = datetime.datetime.now() + datetime.timedelta(hours=12)
-        harga_laundry = 5000
-    total_biaya = (berat_laundry * harga_laundry) + harga_pewangi[jenis_pewangi] + harga_delivery
-    data_pelanggan = {
-            "nama": nama,
-            "berat_laundry": berat_laundry,
-            "jenis_laundry": jenis_laundry,
-            "jenis_pewangi": jenis_pewangi,
-            "harga_laundry_per_kg": harga_laundry,
-            "harga_pewangi": harga_pewangi[jenis_pewangi],
-            "tanggal_laundry" : tanggal.strftime("%Y-%m-%d %H:%M:%S"),
-            "jarak" : jarak,
-            "harga delivery": harga_delivery,
-            "total_biaya": total_biaya,
-            "estimasi_waktu_selesai": waktu_selesai.strftime("%Y-%m-%d %H:%M:%S")
-            }
-    print(json.dumps(data_pelanggan, indent=4))
-    with open("data.json", 'r') as f:
-        jsondata = f.read()
-        data = json.loads(jsondata)
-        data["pelanggan"].append(data_pelanggan)
-        a = json.dumps(data["pelanggan"], indent=4)
-    
-    with open("data.json", "w") as f:
-        f.write(json.dumps(data, indent=4))
+loginwindow = tk.Tk()
+
+#variable yang dibutuhkan
+passwor = tk.StringVar()
+usernam = tk.StringVar()
+
+#configure class
+loginwindow.config(width=600,height=400)
+loginwindow.title("Login")
+loginwindow.geometry("700x400")
+loginwindow.config(bg="white")
+loginwindow.resizable(False, False)
+
+# Logo
+logo = PhotoImage(file=".\BAGIAN PERTAMA\LOGO.png")
+label_logo = Label(loginwindow, image=logo, bg= "white").place(x=230, y=-70)
+
+#Username & Password
+userpass = Frame(loginwindow, bg="white", width= 300, height=60)
+userpass.place(x= 200, y=198)
+
+#gambar tulisan username dan password   
+fontusername = PhotoImage(file="./BAGIAN PERTAMA/username.png")
+Label(loginwindow, image=fontusername, bg="white").place(x=10, y=150)
+
+#username entry
+usernameEntry=Entry(userpass,width=30,font=('Arial'), bg="Grey", textvariable=usernam)
+usernameEntry.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10))
+usernameEntry.pack(padx=35,pady=2)
+
+#password entry
+passEntry=Entry(userpass,width=30,font=('Arial'), bg="Grey", textvariable=passwor)
+passEntry.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10))
+passEntry.pack(padx=35,pady=14)
+
+#gambar button
+button = PhotoImage(file="./BAGIAN PERTAMA/tombol.png")
+#button
+frameButton = Frame(loginwindow, width=100, height=50)
+frameButton.place(x=300, y=300)
+
+button1 = tk.Button(frameButton,bg="white", cursor="hand2", image=button, borderwidth=0, highlightthickness=0, command=login)
+button1.place(relx=0.5,rely=0.5, anchor="center")
+
+loginwindow.mainloop()
