@@ -13,11 +13,11 @@ class InputData:
     def __init__(self):
         input_window = tk.Toplevel()
         self.nama = tk.StringVar()
-        self.berat_laundry = tk.DoubleVar()
+        self.berat_laundry = tk.StringVar()
         self.jenis_laundry = tk.StringVar()
         self.jenispewangi = tk.StringVar()
         self.alamat = tk.StringVar()
-        self.jarak = tk.DoubleVar()
+        self.jarak = tk.StringVar()
 
         pewangi = ["lavender","jeruk","peppermint","strawberry","vanilla","mango"]
         self.jenispewangi.set(pewangi[0])
@@ -88,9 +88,15 @@ class InputData:
 
         total_biaya = (self.berat_laundry.get() * harga_laundry) + x[jenis_pewangi] + harga_delivery
 
+        koma = self.jenis_laundry.get()
+        float(koma.replace(",","."))
+
+        jarak = self.jarak.get()
+        float(jarak.replace(",","."))
+
         data_pelanggan = {
             "nama": self.nama.get(),
-            "berat_laundry": self.berat_laundry.get(),
+            "berat_laundry": koma,
             "jenis_laundry": self.jenis_laundry.get(),
             "jenis_pewangi": self.jenispewangi.get(),
             "harga_laundry_per_kg": harga_laundry,
@@ -175,11 +181,10 @@ class OutputData:
         # self.nama_entry.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10))
         # self.nama_entry.place(x=200,y=65)
 
-        # Create a frame to hold the labels
+
         frame = tk.Frame(self.output_window, bg="#91C5DF")
         frame.pack()
 
-        # Create the labels to display the information
         nama_label = tk.Label(frame, text="Nama: " + namap, justify='left', bg='#91C5DF')
         nama_label.pack(anchor='w')
 

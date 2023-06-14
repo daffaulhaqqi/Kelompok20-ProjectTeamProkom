@@ -18,32 +18,6 @@
             "estimasi_waktu_selesai": "2023-06-06 05:47:37"
         },
         {
-            "nama": "pradipta",
-            "berat_laundry": 2.0,
-            "jenis_laundry": "express",
-            "jenis_pewangi": "lavender",
-            "harga_laundry_per_kg": 5000,
-            "harga_pewangi": 1000,
-            "tanggal_laundry": "2023-06-05 18:25:30",
-            "jarak": 2,
-            "harga delivery": 0,
-            "total_biaya": 11000.0,
-            "estimasi_waktu_selesai": "2023-06-06 06:25:30"
-        },
-        {
-            "nama": "pradipta",
-            "berat_laundry": 2.0,
-            "jenis_laundry": "express",
-            "jenis_pewangi": "jeruk",
-            "harga_laundry_per_kg": 5000,
-            "harga_pewangi": 1500,
-            "tanggal_laundry": "2023-06-07 19:23:47",
-            "jarak": 12,
-            "harga delivery": 27000,
-            "total_biaya": 38500.0,
-            "estimasi_waktu_selesai": "2023-06-08 07:23:47"
-        },
-        {
             "nama": "Pradipta Daniswara",
             "berat_laundry": 2.0,
             "jenis_laundry": "express",

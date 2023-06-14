@@ -38,6 +38,3 @@ def opsi():
     button3 = tk.Button(frame, image=tombol3,cursor="hand2",borderwidth=0, highlightthickness=0, bg="white", command= DelData)
     button3.pack(padx=0, pady=10)
     menuwindow.mainloop()
-
-if __name__ == "__main__":
-    opsi()
