@@ -72,12 +72,20 @@ class InputData:
 
     def input_data(self):
         x = read['pewangi']
+
+        jarak = self.jarak.get()
+        jarak.replace(",",".")
+        jarak = float(jarak)
+        koma = self.berat_laundry.get()
+        koma.replace(",",".")
+        koma = float(koma)
+
         jenis_pewangi = self.jenispewangi.get()
         tanggal = datetime.datetime.now()
-        if self.jarak.get() <= 3:
+        if jarak <= 3:
             harga_delivery = 0
-        elif self.jarak.get() > 3:
-            harga_delivery = (self.jarak.get()-3)*3000
+        elif jarak > 3:
+            harga_delivery = (jarak-3)*3000
 
         if self.jenis_laundry.get() == "reguler":
             waktu_selesai = datetime.datetime.now() + datetime.timedelta(days=3)
@@ -86,13 +94,7 @@ class InputData:
             waktu_selesai = datetime.datetime.now() + datetime.timedelta(hours=12)
             harga_laundry = 5000
 
-        total_biaya = (self.berat_laundry.get() * harga_laundry) + x[jenis_pewangi] + harga_delivery
-
-        koma = self.jenis_laundry.get()
-        float(koma.replace(",","."))
-
-        jarak = self.jarak.get()
-        float(jarak.replace(",","."))
+        total_biaya = (jarak * harga_laundry) + x[jenis_pewangi] + harga_delivery
 
         data_pelanggan = {
             "nama": self.nama.get(),
@@ -102,7 +104,7 @@ class InputData:
             "harga_laundry_per_kg": harga_laundry,
             "harga_pewangi" : x[jenis_pewangi],
             "tanggal_laundry" : tanggal.strftime("%Y-%m-%d %H:%M:%S"),
-            "jarak" : self.jarak.get(),
+            "jarak" : jarak,
             "harga delivery": harga_delivery,
             "total_biaya": total_biaya,
             "estimasi_waktu_selesai": waktu_selesai.strftime("%Y-%m-%d %H:%M:%S")
@@ -167,7 +169,7 @@ class OutputData:
                 break
         else:
             if not found:
-                print("tak ada")
+                showinfo(title='Output Data', message='Data Tidak Ditemukan!')
         
         # gambar = tk.PhotoImage(file="./BAGIAN MENAMPILKAN DATA/menampilkan.png")
         # label_gambar = tk.Label(self.output_window, image=gambar, bg="white")
@@ -257,4 +259,4 @@ class DelData:
                 found = True
         else:
                 if not found:
-                    print("Data tidak ada!")
+                    showinfo(title='Delete Data', message='Data Tidak Ditemukan!')
