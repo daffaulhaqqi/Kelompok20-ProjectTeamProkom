@@ -42,6 +42,19 @@
             "harga delivery": 27000.0,
             "total_biaya": 88000.0,
             "estimasi_waktu_selesai": "2023-06-15 04:26:08"
+        },
+        {
+            "nama": "sad",
+            "berat_laundry": 12.0,
+            "jenis_laundry": "express",
+            "jenis_pewangi": "lavender",
+            "harga_laundry_per_kg": 5000,
+            "harga_pewangi": 1000,
+            "tanggal_laundry": "2023-06-14 18:35:20",
+            "jarak": 12.0,
+            "harga delivery": 27000.0,
+            "total_biaya": 88000.0,
+            "estimasi_waktu_selesai": "2023-06-15 06:35:20"
         }
     ],
     "pewangi": {
