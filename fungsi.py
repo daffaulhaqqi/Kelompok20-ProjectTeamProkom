@@ -18,11 +18,17 @@ class InputData:
         self.jenispewangi = tk.StringVar()
         self.alamat = tk.StringVar()
         self.jarak = tk.StringVar()
+        self.jenis_payment = tk.StringVar()
+        self.jenis_bank = tk.StringVar()
 
         pewangi = ["lavender","jeruk","peppermint","strawberry","vanilla","mango"]
         self.jenispewangi.set(pewangi[0])
         laundry = ["express", "reguler"]
         self.jenis_laundry.set(laundry[0])
+        payment = ["Cash", "Transfer Bank"]
+        self.jenis_payment.set(payment[0])
+        bank = ["-", "Mandiri", "BCA"]
+        self.jenis_bank.set(bank[0])
             
         input_window.config(width=600,height=400)
         input_window.title("Input Data")
@@ -33,10 +39,10 @@ class InputData:
         label_gambar = Label(input_window,image=gambar, bg="white").pack(padx=10,pady=10)
                                                                             
         lists = PhotoImage(file="./inputdata/LIST.png")
-        label_list = Label(input_window,image=lists, bg="white").place(x=140, y=150)
+        label_list = Label(input_window,image=lists, bg="white").place(x=140, y=110)
 
         frame = Frame(input_window, width= 250, height=400, bg="white")
-        frame.place(x= 350, y= 150)
+        frame.place(x= 350, y= 117)
 
         nama_entry = Entry(frame, width=30, font=('arial'), bg="grey", textvariable=self.nama)
         nama_entry.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10))
@@ -44,23 +50,31 @@ class InputData:
 
         berat_entry = Entry(frame, width=30, font=('arial'), bg="grey", textvariable=self.berat_laundry, show="")
         berat_entry.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10))
-        berat_entry.place(x =10, y=30 )
+        berat_entry.place(x =10, y=27 )
             
         jenis_pewangi_option = OptionMenu(frame, self.jenispewangi, *pewangi)
         jenis_pewangi_option.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10), compound='left')
-        jenis_pewangi_option.place(x=10, y= 60)
+        jenis_pewangi_option.place(x=10, y= 52)
 
         jenis_laundry_option = OptionMenu(frame, self.jenis_laundry, *laundry)
         jenis_laundry_option.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10), compound='left')
-        jenis_laundry_option.place(x=10, y= 100)
+        jenis_laundry_option.place(x=10, y= 90)
 
         alamat_entry = Entry(frame, width=30, font=('arial'), bg="grey", textvariable=self.alamat)
         alamat_entry.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10))
-        alamat_entry.place(x=10,y=140)
+        alamat_entry.place(x=10,y=130)
             
         jarak_entry = Entry(frame, width=30, font=('arial'), bg="grey", textvariable=self.jarak, show="")
         jarak_entry.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10))
-        jarak_entry.place(x=10,y=170)
+        jarak_entry.place(x=10,y=160)
+
+        jenis_payment_option = OptionMenu(frame, self.jenis_payment, *payment)
+        jenis_payment_option.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10), compound='left')
+        jenis_payment_option.place(x=10, y= 190)
+
+        jenis_bank_option = OptionMenu(frame, self.jenis_bank, *bank)
+        jenis_bank_option.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10), compound='left')
+        jenis_bank_option.place(x=10, y= 227)
 
         frametom = Frame(input_window, width=130, height=50, bg="white")
         button = PhotoImage(file="./inputdata/submit.png")
@@ -105,6 +119,8 @@ class InputData:
             "harga_pewangi" : x[jenis_pewangi],
             "tanggal_laundry" : tanggal.strftime("%Y-%m-%d %H:%M:%S"),
             "jarak" : jarak,
+            "jenis_payment" : self.jenis_payment.get(),
+            "jenis_bank" : self.jenis_bank.get(),
             "harga delivery": harga_delivery,
             "total_biaya": total_biaya,
             "estimasi_waktu_selesai": waktu_selesai.strftime("%Y-%m-%d %H:%M:%S")
@@ -163,6 +179,8 @@ class OutputData:
                 pewangi = pelanggan["jenis_pewangi"]
                 hargalaundry = pelanggan["harga_laundry_per_kg"]
                 hargapewa = pelanggan["harga_pewangi"]
+                pembayaran = pelanggan["jenis_payment"]
+                bank = pelanggan["jenis_bank"]
                 total = pelanggan["total_biaya"]
                 estimasi = pelanggan["estimasi_waktu_selesai"]
                 found = True
@@ -207,6 +225,12 @@ class OutputData:
 
         harga_pewangi_label = tk.Label(frame, text="Harga Pewangi: Rp" + str(hargapewa), justify='left', bg='#91C5DF')
         harga_pewangi_label.pack(anchor='w')
+
+        pembayaran_label = tk.Label(frame, text="Jenis Pembayaran: " + pembayaran, justify='left', bg='#91C5DF')
+        pembayaran_label.pack(anchor='w')
+
+        bank_label = tk.Label(frame, text="Jenis Bank: " + bank, justify='left', bg='#91C5DF')
+        bank_label.pack(anchor='w')
 
         total_label = tk.Label(frame, text="Total Biaya: Rp" + str(total), justify='left', bg='#91C5DF')
         total_label.pack(anchor='w')

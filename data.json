@@ -55,6 +55,34 @@
             "harga delivery": 27000.0,
             "total_biaya": 88000.0,
             "estimasi_waktu_selesai": "2023-06-15 06:35:20"
+        },
+        {
+            "nama": "dddd",
+            "berat_laundry": 12.0,
+            "jenis_laundry": "express",
+            "jenis_pewangi": "lavender",
+            "harga_laundry_per_kg": 5000,
+            "harga_pewangi": 1000,
+            "tanggal_laundry": "2023-06-14 18:38:00",
+            "jarak": 4.0,
+            "harga delivery": 3000.0,
+            "total_biaya": 24000.0,
+            "estimasi_waktu_selesai": "2023-06-15 06:38:00"
+        },
+        {
+            "nama": "df",
+            "berat_laundry": 3.0,
+            "jenis_laundry": "express",
+            "jenis_pewangi": "lavender",
+            "harga_laundry_per_kg": 5000,
+            "harga_pewangi": 1000,
+            "tanggal_laundry": "2023-06-16 11:18:15",
+            "jarak": 4.0,
+            "jenis_payment": "Cash",
+            "jenis_bank": "-",
+            "harga delivery": 3000.0,
+            "total_biaya": 24000.0,
+            "estimasi_waktu_selesai": "2023-06-16 23:18:15"
         }
     ],
     "pewangi": {
