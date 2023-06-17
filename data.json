@@ -5,35 +5,20 @@
     },
     "pelanggan": [
         {
-            "nama": "asd",
-            "berat_laundry": 12.0,
+            "nama": "dafa",
+            "berat_laundry": 1.0,
             "jenis_laundry": "express",
             "jenis_pewangi": "lavender",
             "harga_laundry_per_kg": 5000,
             "harga_pewangi": 1000,
-            "tanggal_laundry": "2023-06-17 17:40:25",
-            "jarak": 12.0,
+            "tanggal_laundry": "2023-06-17 23:16:54",
+            "jarak": 3.0,
             "jenis_payment": "Cash",
-            "jenis_bank": "Mandiri",
-            "harga delivery": 27000.0,
-            "total_biaya": 88000.0,
-            "estimasi_waktu_selesai": "2023-06-18 05:40:25"
-        },
-        {
-            "nama": "asdds",
-            "berat_laundry": 123.0,
-            "jenis_laundry": "express",
-            "jenis_pewangi": "lavender",
-            "harga_laundry_per_kg": 5000,
-            "harga_pewangi": 1000,
-            "tanggal_laundry": "2023-06-17 23:00:40",
-            "jarak": 123213.0,
-            "jenis_payment": "Cash",
-            "jenis_bank": "BCA",
-            "alamat": "asdasd",
-            "harga delivery": 369630000.0,
-            "total_biaya": 985696000.0,
-            "estimasi_waktu_selesai": "2023-06-18 11:00:40"
+            "jenis_bank": "-",
+            "alamat": "solo",
+            "harga delivery": 0,
+            "total_biaya": 16000.0,
+            "estimasi_waktu_selesai": "2023-06-18 11:16:54"
         }
     ],
     "pewangi": {
