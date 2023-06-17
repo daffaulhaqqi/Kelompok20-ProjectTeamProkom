@@ -27,7 +27,7 @@ class InputData:
         self.jenis_laundry.set(laundry[0])
         payment = ["Cash", "Transfer Bank"]
         self.jenis_payment.set(payment[0])
-        bank = ["Mandiri", "BCA"]
+        bank = ["-","Mandiri", "BCA"]
         self.jenis_bank.set(bank[0])
             
         input_window.title("Input Data")
@@ -68,54 +68,16 @@ class InputData:
         jenis_payment_option = OptionMenu(label, self.jenis_payment, *payment)
         jenis_payment_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
         jenis_payment_option.place(x=self.xw/2, y=self.yw/2+180)
-        
-        def on_option_selected(selected):
-            if selected == "Transfer Bank":
-                nama_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.nama)
-                nama_entry.configure(borderwidth=0, relief="solid", foreground="black")
-                nama_entry.place(x=self.xw/2,y=self.yw/2-110)
 
-                berat_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.berat_laundry, show="")
-                berat_entry.configure(borderwidth=0, relief="solid", foreground="black")
-                berat_entry.place(x =self.xw/2, y= self.yw/2-60)
-                    
-                jenis_pewangi_option = OptionMenu(label, self.jenispewangi, *pewangi)
-                jenis_pewangi_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-                jenis_pewangi_option.place(x=self.xw/2, y=self.yw/2-10)
+        jenis_bank_option = OptionMenu(label, self.jenis_bank, *bank)
+        jenis_bank_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
+        jenis_bank_option.place(x=self.xw/2, y=self.yw/2+220)
 
-                jenis_laundry_option = OptionMenu(label, self.jenis_laundry, *laundry)
-                jenis_laundry_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-                jenis_laundry_option.place(x=self.xw/2, y=self.yw/2+40)
-
-                alamat_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.alamat)
-                alamat_entry.configure(borderwidth=0, relief="solid", foreground="black")
-                alamat_entry.place(x=self.xw/2,y=self.yw/2+80)
-                    
-                jarak_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.jarak, show="")
-                jarak_entry.configure(borderwidth=0, relief="solid", foreground="black")
-                jarak_entry.place(x=self.xw/2,y=self.yw/2+130)
-
-                jenis_payment_option = OptionMenu(label, self.jenis_payment, *payment)
-                jenis_payment_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-                jenis_payment_option.place(x=self.xw/2, y=self.yw/2+180)
-
-                frame_bank = Frame(label, width = 50, height = 20)
-                frame_bank.place(x = self.xw/2, y = self.yw/2+230)
-
-                jenis_bank_option = OptionMenu(frame_bank, self.jenis_bank, *bank)
-                jenis_bank_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-                jenis_bank_option.place(x=0, y= 0)
-
-                button = PhotoImage(file="./inputdata/submit.png")
-                submit = Button(label, image=button, bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.input_data) 
-                submit.place(x=self.xw-250,y=self.yw-150)
-                frame_bank.tkraise()
-        self.jenis_payment.trace('w', lambda *args:on_option_selected(self.jenis_payment.get( )))
-
-        button = PhotoImage(file="./inputdata/submit.png")
+        button = PhotoImage(file="./inputdata/submit2.png")
         submit = Button(label, image=button, bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.input_data) 
         submit.place(x=self.xw-250,y=self.yw-150)
-            
+        label.focus_set()
+        
         input_window.mainloop()
 
     def input_data(self):
@@ -327,5 +289,5 @@ class DelData:
 
 if __name__ == '__main__':
     def a():
-        DelData()
+        InputData()
     a()
