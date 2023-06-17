@@ -11,7 +11,7 @@ with open("data.json", "r") as f:
     
 class InputData:
     def __init__(self):
-        input_window = tk.Toplevel()
+        self.input_window = tk.Toplevel()
         self.nama = tk.StringVar()
         self.berat_laundry = tk.DoubleVar()
         self.jenis_laundry = tk.StringVar()
@@ -30,53 +30,53 @@ class InputData:
         bank = ["-","Mandiri", "BCA"]
         self.jenis_bank.set(bank[0])
             
-        input_window.title("Input Data")
+        self.input_window.title("Input Data")
         xw = 1280
         yw = 720
-        input_window.geometry("%dx%d" % (xw, yw))
-        input_window.resizable(False, False)
+        self.input_window.geometry("%dx%d" % (xw, yw))
+        self.input_window.resizable(False, False)
 
         bg = PhotoImage(file='./inputdata/bg.png')
-        label = Label(input_window, image=bg)
-        label.pack()
+        label = Label(self.input_window, image=bg)
+        label.pack(fill="both", expand=True)
 
-        nama_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.nama)
+        nama_entry = Entry(self.input_window, width=30, font=('Courier'), bg="grey", textvariable=self.nama)
         nama_entry.configure(borderwidth=0, relief="solid", foreground="black")
         nama_entry.place(x=xw/2,y=yw/2-110)
 
-        berat_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.berat_laundry, show="")
+        berat_entry = Entry(self.input_window, width=30, font=('Courier'), bg="grey", textvariable=self.berat_laundry, show="")
         berat_entry.configure(borderwidth=0, relief="solid", foreground="black")
         berat_entry.place(x =xw/2, y= yw/2-60)
             
-        jenis_pewangi_option = OptionMenu(label, self.jenispewangi, *pewangi)
-        jenis_pewangi_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
+        jenis_pewangi_option = OptionMenu(self.input_window, self.jenispewangi, *pewangi)
+        jenis_pewangi_option.configure(borderwidth=0, relief="solid", foreground="black")
         jenis_pewangi_option.place(x=xw/2, y=yw/2-10)
 
-        jenis_laundry_option = OptionMenu(label, self.jenis_laundry, *laundry)
+        jenis_laundry_option = OptionMenu(self.input_window, self.jenis_laundry, *laundry)
         jenis_laundry_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
         jenis_laundry_option.place(x=xw/2, y=yw/2+40)
 
-        alamat_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.alamat)
+        alamat_entry = Entry(self.input_window, width=30, font=('Courier'), bg="grey", textvariable=self.alamat)
         alamat_entry.configure(borderwidth=0, relief="solid", foreground="black")
         alamat_entry.place(x=xw/2,y=yw/2+80)
             
-        jarak_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.jarak, show="")
+        jarak_entry = Entry(self.input_window, width=30, font=('Courier'), bg="grey", textvariable=self.jarak, show="")
         jarak_entry.configure(borderwidth=0, relief="solid", foreground="black")
         jarak_entry.place(x=xw/2,y=yw/2+130)
 
-        jenis_payment_option = OptionMenu(label, self.jenis_payment, *payment)
+        jenis_payment_option = OptionMenu(self.input_window, self.jenis_payment, *payment)
         jenis_payment_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
         jenis_payment_option.place(x=xw/2, y=yw/2+180)
         
-        jenis_bank_option = OptionMenu(label, self.jenis_bank, *bank)
+        jenis_bank_option = OptionMenu(self.input_window, self.jenis_bank, *bank)
         jenis_bank_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
         jenis_bank_option.place(x=xw/2, y=yw/2+220)
 
         button = PhotoImage(file="./inputdata/submit.png")
-        submit = Button(label, image=button, bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.input_data) 
+        submit = Button(self.input_window, image=button, bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.input_data) 
         submit.place(x=xw-250,y=yw-150)
             
-        input_window.mainloop()
+        self.input_window.mainloop()
 
     def input_data(self):
         x = read['pewangi']

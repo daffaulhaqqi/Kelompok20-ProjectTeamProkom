@@ -10,9 +10,6 @@ from fungsi import *
 #State window
 with open("data.json", "r") as f:
     read = json.load(f)
-def open_input():
-    InputData.tampilan_input(self=NONE)
-
 def opsi():
     menuwindow = tk.Tk()
     menuwindow.title("Menu")
