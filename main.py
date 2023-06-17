@@ -26,42 +26,33 @@ loginwindow = tk.Tk()
 passwor = tk.StringVar()
 usernam = tk.StringVar()
 
-#configure class
-loginwindow.config(width=600,height=400)
+
 loginwindow.title("Login")
-loginwindow.geometry("700x400")
-loginwindow.config(bg="white")
+loginwindow.state('zoomed')
+screen_width = loginwindow.winfo_screenwidth()
+screen_height = loginwindow.winfo_screenheight()
+loginwindow.geometry("%dx%d" % (screen_width, screen_height))
 loginwindow.resizable(False, False)
 
-# Logo
-logo = PhotoImage(file=".\BAGIAN PERTAMA\LOGO.png")
-label_logo = Label(loginwindow, image=logo, bg= "white").place(x=230, y=-70)
-
-#Username & Password
-userpass = Frame(loginwindow, bg="white", width= 300, height=60)
-userpass.place(x= 200, y=198)
-
-#gambar tulisan username dan password   
-fontusername = PhotoImage(file="./BAGIAN PERTAMA/username.png")
-Label(loginwindow, image=fontusername, bg="white").place(x=10, y=150)
+bg_image = tk.PhotoImage(file='./BAGIAN PERTAMA/username.png')
+bg_label = tk.Label(loginwindow, image=bg_image)
+bg_label.pack()
 
 #username entry
-usernameEntry=Entry(userpass,width=30,font=('Arial'), bg="Grey", textvariable=usernam)
-usernameEntry.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10))
-usernameEntry.pack(padx=35,pady=2)
+usernameEntry=Entry(bg_label,width=25,font=('Courier'), textvariable=usernam)
+usernameEntry.configure(borderwidth=0, relief="solid", foreground="black")
+usernameEntry.place(x=screen_width/2, y=screen_height/2+25, anchor="center")
 
 #password entry
-passEntry=Entry(userpass,width=30,font=('Arial'), bg="Grey", textvariable=passwor)
-passEntry.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10))
-passEntry.pack(padx=35,pady=14)
+passEntry=Entry(bg_label,width=25,font=('Courier'), textvariable=passwor)
+passEntry.configure(borderwidth=0, relief="flat", foreground="black")
+passEntry.place(x=screen_width/2, y=screen_height/2+90, anchor="center")
 
 #gambar button
-button = PhotoImage(file="./BAGIAN PERTAMA/tombol.png")
-#button
-frameButton = Frame(loginwindow, width=100, height=50)
-frameButton.place(x=300, y=300)
+button = PhotoImage(file="./BAGIAN PERTAMA/Button.png")
 
-button1 = tk.Button(frameButton,bg="white", cursor="hand2", image=button, borderwidth=0, highlightthickness=0, command=login)
-button1.place(relx=0.5,rely=0.5, anchor="center")
+#button
+button1 = tk.Button(bg_label, cursor="hand2", image=button, borderwidth=0, highlightthickness=0, command=login)
+button1.place(x=screen_width/2 - 100, y=screen_height/2 + 150)
 
 loginwindow.mainloop()

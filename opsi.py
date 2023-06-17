@@ -16,27 +16,26 @@ def open_input():
 def opsi():
     menuwindow = tk.Tk()
     menuwindow.title("Menu")
-    menuwindow.geometry("700x400")
-    menuwindow.config(width=600,height=400,bg="white")
+    screen_width = menuwindow.winfo_screenwidth()
+    screen_height = menuwindow.winfo_screenheight()
+    menuwindow.geometry("%dx%d" % (screen_width, screen_height))
     menuwindow.resizable(False, False)
 
     #gambar menu
-    gambar = tk.PhotoImage(file="./BAGIAN MENU/menu.png")
-    labelgambar = tk.Label(menuwindow,image=gambar, bg="white")
-    labelgambar.place(anchor="center", y=50, x=350)
+    bg = tk.PhotoImage(file="./BAGIAN MENU/bg.png")
+    label = Label(menuwindow, image=bg)
+    label.pack(fill="both", expand=True)
 
     tombol1 = PhotoImage(file="./BAGIAN MENU/memasukkan.png")
     tombol2 = PhotoImage(file="./BAGIAN MENU/tampil.png")
     tombol3 = PhotoImage(file="./BAGIAN MENU/hapus.png")
 
-    frame = Frame(menuwindow, width=300, height=300, bg="white")
-    frame.place(anchor="center", y=200, x=350)
-    button1 = tk.Button(frame, image=tombol1,cursor="hand2",borderwidth=0, highlightthickness=0, bg="white", command= InputData)
-    button1.pack(padx=0, pady=10)
-    button2 = tk.Button(frame,image=tombol2, cursor="hand2",borderwidth=0, highlightthickness=0, bg="white",command= OutputData)
-    button2.pack(padx=0, pady=10)
-    button3 = tk.Button(frame, image=tombol3,cursor="hand2",borderwidth=0, highlightthickness=0, bg="white", command= DelData)
-    button3.pack(padx=0, pady=10)
+    button1 = tk.Button(label, image=tombol1,cursor="hand2",borderwidth=0, highlightthickness=0, bg="white", command= InputData)
+    button1.place(x=screen_width/2-245, y=screen_height/2.5-100)
+    button2 = tk.Button(label,image=tombol2, cursor="hand2",borderwidth=0, highlightthickness=0, bg="white",command= OutputData)
+    button2.place(x= screen_width/2-245, y=screen_height/2.5+50)
+    button3 = tk.Button(label, image=tombol3,cursor="hand2",borderwidth=0, highlightthickness=0, bg="white", command= DelData)
+    button3.place(x= screen_width/2-245, y=screen_height/2.5+200)
     menuwindow.mainloop()
 
 if __name__ == "__main__":
