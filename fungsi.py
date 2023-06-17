@@ -27,7 +27,7 @@ class InputData:
         self.jenis_laundry.set(laundry[0])
         payment = ["Cash", "Transfer Bank"]
         self.jenis_payment.set(payment[0])
-        bank = ["-","Mandiri", "BCA"]
+        bank = ["Mandiri", "BCA"]
         self.jenis_bank.set(bank[0])
             
         input_window.title("Input Data")
@@ -68,14 +68,21 @@ class InputData:
         jenis_payment_option = OptionMenu(label, self.jenis_payment, *payment)
         jenis_payment_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
         jenis_payment_option.place(x=self.xw/2, y=self.yw/2+180)
+        
+        def on_option_selected(selected):
+            if selected == "Transfer Bank":
+                nama_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.nama)
+                nama_entry.configure(borderwidth=0, relief="solid", foreground="black")
+                nama_entry.place(x=self.xw/2,y=self.yw/2-110)
 
-        jenis_bank_option = OptionMenu(label, self.jenis_bank, *bank)
-        jenis_bank_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-        jenis_bank_option.place(x=self.xw/2, y=self.yw/2+220)
+                berat_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.berat_laundry, show="")
+                berat_entry.configure(borderwidth=0, relief="solid", foreground="black")
+                berat_entry.place(x =self.xw/2, y= self.yw/2-60)
+                    
+                jenis_pewangi_option = OptionMenu(label, self.jenispewangi, *pewangi)
+                jenis_pewangi_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
+                jenis_pewangi_option.place(x=self.xw/2, y=self.yw/2-10)
 
-<<<<<<< HEAD
-        button = PhotoImage(file="./inputdata/submit2.png")
-=======
                 jenis_laundry_option = OptionMenu(label, self.jenis_laundry, *laundry)
                 jenis_laundry_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
                 jenis_laundry_option.place(x=self.xw/2, y=self.yw/2+40)
@@ -107,11 +114,9 @@ class InputData:
         self.jenis_payment.trace('w', lambda *args:on_option_selected(self.jenis_payment.get( )))
 
         button = PhotoImage(file="./inputdata/submit.png")
->>>>>>> 2b23726ba940e8697f5dc27fdf45cdd470ba104a
         submit = Button(label, image=button, bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.input_data) 
         submit.place(x=self.xw-250,y=self.yw-150)
-        label.focus_set()
-        
+            
         input_window.mainloop()
 
     def input_data(self):
@@ -323,5 +328,5 @@ class DelData:
 
 if __name__ == '__main__':
     def a():
-        InputData()
+        DelData()
     a()
