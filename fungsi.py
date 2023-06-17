@@ -31,8 +31,8 @@ class InputData:
         self.jenis_bank.set(bank[0])
             
         input_window.title("Input Data")
-        self.xw = input_window.winfo_screenwidth()
-        self.yw = input_window.winfo_screenheight()
+        self.xw = 1280
+        self.yw = 720
         input_window.geometry("%dx%d" % (self.xw, self.yw))
         input_window.resizable(False, False)
 
@@ -203,8 +203,8 @@ class OutputData:
     def __init__(self):         
         self.output_window = tk.Toplevel()
         self.namaout = tk.StringVar()
-        self.xw = self.output_window.winfo_screenwidth()
-        self.yw = self.output_window.winfo_screenheight()
+        self.xw = 1280
+        self.yw = 720
         self.output_window.geometry("%dx%d" % (self.xw, self.yw))
         self.output_window.title("Output Data")
         self.output_window.resizable(False, False)
@@ -288,8 +288,8 @@ class DelData:
     def __init__(self):         
         self.del_window = tk.Toplevel()
         self.namaout = tk.StringVar()
-        self.xw = self.del_window.winfo_screenwidth()
-        self.yw = self.del_window.winfo_screenheight()
+        self.xw = 1280
+        self.yw = 720
         self.del_window.geometry("%dx%d" % (self.xw, self.yw))
         self.del_window.title("Input Data")
         self.del_window.config(bg="white")
