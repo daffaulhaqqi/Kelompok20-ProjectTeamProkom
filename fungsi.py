@@ -13,11 +13,11 @@ class InputData:
     def __init__(self):
         input_window = tk.Toplevel()
         self.nama = tk.StringVar()
-        self.berat_laundry = tk.StringVar()
+        self.berat_laundry = tk.DoubleVar()
         self.jenis_laundry = tk.StringVar()
         self.jenispewangi = tk.StringVar()
         self.alamat = tk.StringVar()
-        self.jarak = tk.StringVar()
+        self.jarak = tk.DoubleVar()
         self.jenis_payment = tk.StringVar()
         self.jenis_bank = tk.StringVar()
 
@@ -27,95 +27,54 @@ class InputData:
         self.jenis_laundry.set(laundry[0])
         payment = ["Cash", "Transfer Bank"]
         self.jenis_payment.set(payment[0])
-        bank = ["Mandiri", "BCA"]
+        bank = ["-","Mandiri", "BCA"]
         self.jenis_bank.set(bank[0])
             
         input_window.title("Input Data")
-        self.xw = 1280
-        self.yw = 720
-        input_window.geometry("%dx%d" % (self.xw, self.yw))
+        xw = 1280
+        yw = 720
+        input_window.geometry("%dx%d" % (xw, yw))
         input_window.resizable(False, False)
 
         bg = PhotoImage(file='./inputdata/bg.png')
         label = Label(input_window, image=bg)
-        label.pack(fill='both', expand=True)
-
+        label.pack()
 
         nama_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.nama)
         nama_entry.configure(borderwidth=0, relief="solid", foreground="black")
-        nama_entry.place(x=self.xw/2,y=self.yw/2-110)
+        nama_entry.place(x=xw/2,y=yw/2-110)
 
         berat_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.berat_laundry, show="")
         berat_entry.configure(borderwidth=0, relief="solid", foreground="black")
-        berat_entry.place(x =self.xw/2, y= self.yw/2-60)
+        berat_entry.place(x =xw/2, y= yw/2-60)
             
         jenis_pewangi_option = OptionMenu(label, self.jenispewangi, *pewangi)
         jenis_pewangi_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-        jenis_pewangi_option.place(x=self.xw/2, y=self.yw/2-10)
+        jenis_pewangi_option.place(x=xw/2, y=yw/2-10)
 
         jenis_laundry_option = OptionMenu(label, self.jenis_laundry, *laundry)
         jenis_laundry_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-        jenis_laundry_option.place(x=self.xw/2, y=self.yw/2+40)
+        jenis_laundry_option.place(x=xw/2, y=yw/2+40)
 
         alamat_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.alamat)
         alamat_entry.configure(borderwidth=0, relief="solid", foreground="black")
-        alamat_entry.place(x=self.xw/2,y=self.yw/2+80)
+        alamat_entry.place(x=xw/2,y=yw/2+80)
             
         jarak_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.jarak, show="")
         jarak_entry.configure(borderwidth=0, relief="solid", foreground="black")
-        jarak_entry.place(x=self.xw/2,y=self.yw/2+130)
+        jarak_entry.place(x=xw/2,y=yw/2+130)
 
         jenis_payment_option = OptionMenu(label, self.jenis_payment, *payment)
         jenis_payment_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-        jenis_payment_option.place(x=self.xw/2, y=self.yw/2+180)
+        jenis_payment_option.place(x=xw/2, y=yw/2+180)
         
-        def on_option_selected(selected):
-            if selected == "Transfer Bank":
-                nama_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.nama)
-                nama_entry.configure(borderwidth=0, relief="solid", foreground="black")
-                nama_entry.place(x=self.xw/2,y=self.yw/2-110)
-
-                berat_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.berat_laundry, show="")
-                berat_entry.configure(borderwidth=0, relief="solid", foreground="black")
-                berat_entry.place(x =self.xw/2, y= self.yw/2-60)
-                    
-                jenis_pewangi_option = OptionMenu(label, self.jenispewangi, *pewangi)
-                jenis_pewangi_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-                jenis_pewangi_option.place(x=self.xw/2, y=self.yw/2-10)
-
-                jenis_laundry_option = OptionMenu(label, self.jenis_laundry, *laundry)
-                jenis_laundry_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-                jenis_laundry_option.place(x=self.xw/2, y=self.yw/2+40)
-
-                alamat_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.alamat)
-                alamat_entry.configure(borderwidth=0, relief="solid", foreground="black")
-                alamat_entry.place(x=self.xw/2,y=self.yw/2+80)
-                    
-                jarak_entry = Entry(label, width=30, font=('Courier'), bg="grey", textvariable=self.jarak, show="")
-                jarak_entry.configure(borderwidth=0, relief="solid", foreground="black")
-                jarak_entry.place(x=self.xw/2,y=self.yw/2+130)
-
-                jenis_payment_option = OptionMenu(label, self.jenis_payment, *payment)
-                jenis_payment_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-                jenis_payment_option.place(x=self.xw/2, y=self.yw/2+180)
-                
-                button = PhotoImage(file="./inputdata/submit.png")
-                submit = Button(label, image=button, bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.input_data) 
-                submit.place(x=self.xw-250,y=self.yw-150)
-
-                frame_bank = Frame(label, width = 50, height = 20)
-                frame_bank.place(x = self.xw/2, y = self.yw/2+230)
-
-                jenis_bank_option = OptionMenu(frame_bank, self.jenis_bank, *bank)
-                jenis_bank_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
-                jenis_bank_option.place(x=0, y= 0)
-
-                frame_bank.tkraise()
-        self.jenis_payment.trace('w', lambda *args:on_option_selected(self.jenis_payment.get( )))
+        jenis_bank_option = OptionMenu(label, self.jenis_bank, *bank)
+        jenis_bank_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
+        jenis_bank_option.place(x=xw/2, y=yw/2+220)
 
         button = PhotoImage(file="./inputdata/submit.png")
         submit = Button(label, image=button, bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.input_data) 
-        submit.place(x=self.xw-250,y=self.yw-150)
+        submit.place(x=xw-250,y=yw-150)
             
         input_window.mainloop()
 
@@ -123,16 +82,6 @@ class InputData:
         x = read['pewangi']
 
         jarak = self.jarak.get()
-        if not jarak:
-            showerror("Error", "Jarak Tidak Boleh Kosong!")
-        else:
-            jarak.replace(",",".")
-            jarak = float(jarak)
-        koma = self.berat_laundry.get()
-        if not koma:
-            showerror("Error", "Berat Laundry Tidak Boleh Kosong!")
-            koma.replace(",",".")
-            koma = float(koma)
 
         jenis_pewangi = self.jenispewangi.get()
         tanggal = datetime.datetime.now()
@@ -147,6 +96,13 @@ class InputData:
         else:
             waktu_selesai = datetime.datetime.now() + datetime.timedelta(hours=12)
             harga_laundry = 5000
+     
+        if not jarak:
+            showerror("Error", "Jarak Tidak Boleh Kosong!")
+
+        koma = self.berat_laundry.get()
+        if not koma:
+            showerror("Error", "Berat Laundry Tidak Boleh Kosong!")
 
         total_biaya = (jarak * harga_laundry) + x[jenis_pewangi] + harga_delivery
         nama = self.nama.get()
@@ -204,9 +160,9 @@ class OutputData:
     def __init__(self):         
         self.output_window = tk.Toplevel()
         self.namaout = tk.StringVar()
-        self.xw = 1280
-        self.yw = 720
-        self.output_window.geometry("%dx%d" % (self.xw, self.yw))
+        xw = 1280
+        yw = 720
+        self.output_window.geometry("%dx%d" % (xw, yw))
         self.output_window.title("Output Data")
         self.output_window.resizable(False, False)
 
@@ -216,15 +172,17 @@ class OutputData:
 
         self.nama_entry = tk.Entry(self.label, width=30, font=('Courier'), bg="grey", textvariable=self.namaout)
         self.nama_entry.configure(borderwidth=0, relief="solid", foreground="black")
-        self.nama_entry.place(x=self.xw/2-100,y=self.yw/4-10)
+        self.nama_entry.place(x=xw/2-100,y=yw/4-10)
 
         button = tk.PhotoImage(file="./BAGIAN MENAMPILKAN DATA/button.png")
         submit = tk.Button(self.label, image=button,bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.output) 
-        submit.place(x=self.xw/2-50,y=self.yw/4+50)
+        submit.place(x=xw/2-50,y=yw/4+50)
 
         self.output_window.mainloop()
 
     def output(self):
+        xw = 1280
+        yw = 720
         with open("data.json", "r") as f:
             data = json.load(f)
             found = False
@@ -248,7 +206,7 @@ class OutputData:
                 showinfo(title='Output Data', message='Data Tidak Ditemukan!')
 
         frame = tk.Frame(self.label)
-        frame.place(x= self.xw/2-250, y= self.yw/2-30)
+        frame.place(x= xw/2-250, y= yw/2-30)
 
         nama_label = tk.Label(frame, text="Nama: " + namap, justify='left',  font="Courier")
         nama_label.pack(anchor='w')
@@ -289,9 +247,9 @@ class DelData:
     def __init__(self):         
         self.del_window = tk.Toplevel()
         self.namaout = tk.StringVar()
-        self.xw = 1280
-        self.yw = 720
-        self.del_window.geometry("%dx%d" % (self.xw, self.yw))
+        xw = 1280
+        yw = 720
+        self.del_window.geometry("%dx%d" % (xw, yw))
         self.del_window.title("Input Data")
         self.del_window.config(bg="white")
         self.del_window.resizable(False, False)
@@ -302,11 +260,11 @@ class DelData:
 
         self.nama_entry = tk.Entry(self.label, width=30, font=('Courier'), bg="grey", textvariable=self.namaout)
         self.nama_entry.configure(borderwidth=0, relief="solid", foreground="black")
-        self.nama_entry.place(x=self.xw/2-100,y=self.yw/4-10)
+        self.nama_entry.place(x=xw/2-100,y=yw/4+25)
 
         button = tk.PhotoImage(file="./BAGIAN MENAMPILKAN DATA/button.png")
         submit = tk.Button(self.label, image=button,bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.delete) 
-        submit.place(x=self.xw/2-50,y=self.yw/4+50)
+        submit.place(x=xw/2-50,y=yw/4+90)
 
         self.del_window.mainloop()
     
