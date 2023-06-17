@@ -288,26 +288,24 @@ class DelData:
     def __init__(self):         
         self.del_window = tk.Toplevel()
         self.namaout = tk.StringVar()
-        screen_width = self.del_window.winfo_screenwidth()
-        screen_height = self.del_window.winfo_screenheight()
-        self.del_window.geometry("%dx%d" % (screen_width, screen_height))
+        self.xw = self.del_window.winfo_screenwidth()
+        self.yw = self.del_window.winfo_screenheight()
+        self.del_window.geometry("%dx%d" % (self.xw, self.yw))
         self.del_window.title("Input Data")
         self.del_window.config(bg="white")
         self.del_window.resizable(False, False)
 
         bg = tk.PhotoImage(file="./BAGIAN MENGHAPUS DATA/bg.png")
-        label = tk.Label(self.del_window, image=bg)
-        label.pack(fill="both", expand=True)
+        self.label = tk.Label(self.del_window, image=bg)
+        self.label.pack(fill="both", expand=True)
 
-        self.nama_entry = tk.Entry(self.del_window, width=45, font=('Courier'), bg="grey", textvariable=self.namaout)
+        self.nama_entry = tk.Entry(self.label, width=30, font=('Courier'), bg="grey", textvariable=self.namaout)
         self.nama_entry.configure(borderwidth=0, relief="solid", foreground="black")
-        self.nama_entry.place(x=200,y=65)
+        self.nama_entry.place(x=self.xw/2-100,y=self.yw/4-10)
 
-        frametom = tk.Frame(self.del_window, width=130, height=50, bg="white")
-        button = tk.PhotoImage(file="./BAGIAN MENGHAPUS DATA/submit.png")
-        submit = tk.Button(frametom, image=button, bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.delete) 
-        frametom.place(x=450, y=370)
-        submit.place(x=0,y=0)
+        button = tk.PhotoImage(file="./BAGIAN MENAMPILKAN DATA/button.png")
+        submit = tk.Button(self.label, image=button,bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.delete) 
+        submit.place(x=self.xw/2-50,y=self.yw/4+50)
 
         self.del_window.mainloop()
     
@@ -329,5 +327,5 @@ class DelData:
 
 if __name__ == '__main__':
     def a():
-        InputData()
+        DelData()
     a()
