@@ -68,13 +68,18 @@ class InputData:
         jarak_entry.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10))
         jarak_entry.place(x=10,y=160)
 
-        jenis_payment_option = OptionMenu(frame, self.jenis_payment, *payment)
+        
+        jenis_payment_option = OptionMenu(input_window, self.jenis_payment, *payment)
         jenis_payment_option.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10), compound='left')
-        jenis_payment_option.place(x=10, y= 190)
-
-        jenis_bank_option = OptionMenu(frame, self.jenis_bank, *bank)
-        jenis_bank_option.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10), compound='left')
-        jenis_bank_option.place(x=10, y= 227)
+        jenis_payment_option.place(x=360, y= 310)
+        
+        if self.jenis_payment.get() == "Transfer Bank":
+            frame_bank = Frame(input_window, width = 50, height = 10)
+            frame_bank.place(x = 20, y = 170)
+            jenis_bank_option = OptionMenu(frame_bank, self.jenis_bank, *bank)
+            jenis_bank_option.configure(borderwidth=0, relief="solid", foreground="black", background="#f2f2f2", font=('Arial', 10), compound='left')
+            jenis_bank_option.place(x=10, y= 227)
+            frame_bank.tkraise()
 
         frametom = Frame(input_window, width=130, height=50, bg="white")
         button = PhotoImage(file="./inputdata/submit.png")
