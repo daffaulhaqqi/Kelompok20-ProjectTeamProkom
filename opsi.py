@@ -16,8 +16,8 @@ def open_input():
 def opsi():
     menuwindow = tk.Tk()
     menuwindow.title("Menu")
-    screen_width = menuwindow.winfo_screenwidth()
-    screen_height = menuwindow.winfo_screenheight()
+    screen_width = 1280
+    screen_height = 720
     menuwindow.geometry("%dx%d" % (screen_width, screen_height))
     menuwindow.resizable(False, False)
 

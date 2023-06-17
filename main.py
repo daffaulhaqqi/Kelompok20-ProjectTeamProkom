@@ -29,8 +29,8 @@ usernam = tk.StringVar()
 
 loginwindow.title("Login")
 loginwindow.state('zoomed')
-screen_width = loginwindow.winfo_screenwidth()
-screen_height = loginwindow.winfo_screenheight()
+screen_width = 1280
+screen_height = 720
 loginwindow.geometry("%dx%d" % (screen_width, screen_height))
 loginwindow.resizable(False, False)
 
