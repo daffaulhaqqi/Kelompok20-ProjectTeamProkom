@@ -194,6 +194,7 @@ class OutputData:
                 jenis = pelanggan["jenis_laundry"]
                 pewangi = pelanggan["jenis_pewangi"]
                 hargalaundry = pelanggan["harga_laundry_per_kg"]
+                alamat = pelanggan["alamat"]
                 hargapewa = pelanggan["harga_pewangi"]
                 pembayaran = pelanggan["jenis_payment"]
                 bank = pelanggan["jenis_bank"]
@@ -206,7 +207,7 @@ class OutputData:
                 showinfo(title='Output Data', message='Data Tidak Ditemukan!')
 
         frame = tk.Frame(self.label)
-        frame.place(x= xw/2-250, y= yw/2-30)
+        frame.place(x= xw/2-250, y= yw/2-45)
 
         nama_label = tk.Label(frame, text="Nama: " + namap, justify='left',  font="Courier")
         nama_label.pack(anchor='w')
@@ -228,6 +229,9 @@ class OutputData:
 
         harga_pewangi_label = tk.Label(frame, text="Harga Pewangi: Rp" + str(hargapewa), justify='left',  font="Courier")
         harga_pewangi_label.pack(anchor='w')
+
+        alamat_label = tk.Label(frame, text="Alamat: " + alamat, justify='left', font="Courier")
+        alamat_label.pack(anchor='w')
 
         pembayaran_label = tk.Label(frame, text="Jenis Pembayaran: " + pembayaran, justify='left',  font="Courier")
         pembayaran_label.pack(anchor='w')
@@ -283,8 +287,3 @@ class DelData:
         else:
                 if not found:
                     showinfo(title='Delete Data', message='Data Tidak Ditemukan!')
-
-if __name__ == '__main__':
-    def a():
-        DelData()
-    a()

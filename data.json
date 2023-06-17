@@ -18,6 +18,22 @@
             "harga delivery": 27000.0,
             "total_biaya": 88000.0,
             "estimasi_waktu_selesai": "2023-06-18 05:40:25"
+        },
+        {
+            "nama": "asdds",
+            "berat_laundry": 123.0,
+            "jenis_laundry": "express",
+            "jenis_pewangi": "lavender",
+            "harga_laundry_per_kg": 5000,
+            "harga_pewangi": 1000,
+            "tanggal_laundry": "2023-06-17 23:00:40",
+            "jarak": 123213.0,
+            "jenis_payment": "Cash",
+            "jenis_bank": "BCA",
+            "alamat": "asdasd",
+            "harga delivery": 369630000.0,
+            "total_biaya": 985696000.0,
+            "estimasi_waktu_selesai": "2023-06-18 11:00:40"
         }
     ],
     "pewangi": {
