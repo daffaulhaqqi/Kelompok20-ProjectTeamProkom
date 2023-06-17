@@ -98,6 +98,10 @@ class InputData:
                 jenis_payment_option = OptionMenu(label, self.jenis_payment, *payment)
                 jenis_payment_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
                 jenis_payment_option.place(x=self.xw/2, y=self.yw/2+180)
+                
+                button = PhotoImage(file="./inputdata/submit.png")
+                submit = Button(label, image=button, bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.input_data) 
+                submit.place(x=self.xw-250,y=self.yw-150)
 
                 frame_bank = Frame(label, width = 50, height = 20)
                 frame_bank.place(x = self.xw/2, y = self.yw/2+230)
@@ -106,9 +110,6 @@ class InputData:
                 jenis_bank_option.configure(borderwidth=0, relief="solid", foreground="black", compound='left')
                 jenis_bank_option.place(x=0, y= 0)
 
-                button = PhotoImage(file="./inputdata/submit.png")
-                submit = Button(label, image=button, bg="white", cursor="hand2", borderwidth=0, highlightthickness=0, command=self.input_data) 
-                submit.place(x=self.xw-250,y=self.yw-150)
                 frame_bank.tkraise()
         self.jenis_payment.trace('w', lambda *args:on_option_selected(self.jenis_payment.get( )))
 
